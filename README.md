@@ -1,7 +1,12 @@
-# screen
-screen 실행 방법
+# Background 실행방법
 
-## download
+- [Ubuntu](#screen)
+- [Window](#Start)
+
+## screen
+screen 실행 방법 (Ubuntu)
+
+### download
 
 - apt update
   
@@ -15,7 +20,7 @@ screen 실행 방법
   sudo apt install screen
   ```
 
-## example
+### example
 
 - screen 생성
 
@@ -55,4 +60,43 @@ screen 실행 방법
 
   ```bash
   Ctrl + a → d
+  ```
+
+---
+
+## Start
+
+start 실행 방법 (Window)
+
+### Example
+
+- python 작업 확인
+
+  ```bash
+  Get-Process python* |
+  Select-Object Id, ProcessName, Path
+  ```
+
+- 시작
+
+  ```bash
+  Start-Process uv `
+    -ArgumentList "run app.py" `
+    -WindowStyle Hidden
+  ```
+
+- process 종료
+
+  ```bash
+  Stop-Process -Id 19620 -Force
+  ```
+
+- python으로 돌아가고 있는거 중에서 경로가 ~인거 종료
+
+  ```bash
+  Get-Process python |
+  Where-Object {
+      $_.Path -like "*\AppData\Roaming\uv\python\*"
+  } |
+  Stop-Process -Force
   ```
